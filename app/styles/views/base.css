@@ -1,0 +1,42 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	font-size: 100%;
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	font-size: 1.25rem;
+	color: #333;
+	background-color: white;
+	font-family: helvetica, sans-serif;
+}
+
+
+#app, #app-render {
+	width: 100%;
+	height: 100%;
+}
+
+/* .container {
+	max-width: 1010px;
+	margin: auto;
+} */
+
+.active {
+	background-color: rgb(242, 242, 242);
+}
+
+a:hover {
+	background-color: rgb(242, 242, 242);
+}
+
+a:active {
+  background-color: rgb(199, 215, 254);
+  transition: 100ms;
+}
