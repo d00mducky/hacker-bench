@@ -13,3 +13,5 @@ create table users (
   chimpScore INT,
   PRIMARY KEY (id)
 );
+
+insert into users (name, reactScore, aimScore, numScore, seqScore, verbalScore, chimpScore) values ('Kyle Perra', 0, 0, 0, 0, 0, 0);

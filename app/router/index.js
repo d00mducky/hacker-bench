@@ -7,6 +7,7 @@ import Reaction from '../views/Reaction.jsx';
 import AimTrainer from "../views/Aim.jsx";
 import VerbMem from "../views/VerbMem.jsx";
 import NumMem from "../views/NumMem.jsx";
+import Dashboard from '../views/Dashboard.jsx';
 
 import "../styles/views/Base.css";
 
@@ -21,6 +22,7 @@ const Routes = (
       <Route path="/aim" component={AimTrainer} />
       <Route path="/verbmem" component={VerbMem} />
       <Route path="/nummem" component={NumMem} />
+      <Route path="/dashboard" component={Dashboard} />
     </div>
   </Router>
 );

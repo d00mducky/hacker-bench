@@ -14,3 +14,31 @@
 #verb-hero > h4 {
   padding: 1rem 1rem;
 }
+
+#verb-play-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 1rem;
+}
+
+#verb-play-btns > * {
+  margin: 0rem 1rem;
+}
+
+#verb-game-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 1rem;
+  color: white;
+  opacity: 50%;
+}
+
+#verb-game-lives {
+  margin-right: 1rem;
+}
+
+#very-game-score {
+  margin-left: 1rem;
+}

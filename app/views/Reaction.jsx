@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Api from "../services/api";
+import API from "../services/api.js";
 
 import styles from "../styles/views/Reaction.css";
 
@@ -77,8 +77,12 @@ class Reaction extends Component {
       currentTime: total
     })
     if (this.state.bestTime > total) {
-      this.setState({ bestTime: total, newRecord: true })
-      // TODO store top time to DB
+      this.setState({ bestTime: total, newRecord: true }, () => {
+        // TODO store top time to DB
+        API.updateReactScore([this.state.bestTime], (results) => {
+          console.log(results);
+        });
+      });
     }
   }
 
@@ -95,7 +99,9 @@ class Reaction extends Component {
 
   storeBest(e) {
     e.preventDefault();
-    //TODO implement saving a score
+    API.updateReactScore([this.state.currentTime], (results) => {
+      console.log(results);
+    })
   }
 
   render() {

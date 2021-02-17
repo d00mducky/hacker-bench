@@ -1,4 +1,5 @@
 import React from "react";
+import API from '../services/api.js';
 
 import styles from '../styles/views/Aim.css';
 
@@ -93,13 +94,15 @@ class AimTrainer extends React.Component {
     }, () => {
       if (this.state.bestTime > avg) {
         this.setState({ bestTime: avg, newRecord: true })
-        // TODO store top time to DB
       }
     })
   }
 
   storeBest(e) {
     e.preventDefault();
+    API.updateAimScore([this.state.currentTime], (results) => {
+      console.log(results);
+    })
   }
 
   render() {

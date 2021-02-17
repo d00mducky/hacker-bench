@@ -11,43 +11,102 @@ class VerbMem extends React.Component {
     this.state = {
       playing: false,
       finished: false,
+      newRecord: false,
       lives: 3,
       currentScore: 0,
       bestScore: 0,
       wordBank: [],
-      aword: '',
-      seenWords: {},
+      currentWord: '',
+      seenWords: [],
     };
   }
 
   componentDidMount() {
-    this.setState({
-      wordBank: wordBank.words,
-      aword: this.getRandWord()
-    })
-
+    //TODO pull in best score from DB
+    this.setState({ wordBank: wordBank.words })
   }
 
-  getRandWord() {
+  loseLife() {
+    let val = this.state.lives - 1;
+    if (val === 0) {
+      // stop the game, done playing
+      this.stopEvent();
+    } else {
+      this.setState({ lives: val })
+    }
+  }
+
+  getRandWord(isNew) {
     let len = this.state.wordBank.length;
-    let rand = Math.floor(Math.random() * len);
-    return this.state.wordBank[rand];
-  }
-
-  checkWordBank(word) {
-    if (this.state.seenWords[word]) console.log('hi')
+    if (isNew) {
+      let rand = Math.floor(Math.random() * len);
+      let word = this.state.wordBank[rand];
+      this.setState({ currentWord: word })
+    } else {
+      if (Math.random() > .7) {
+        let rand = Math.floor(Math.random() * this.state.seenWords.length)
+        let word = this.state.seenWords[rand];
+        this.setState({ currentWord: word })
+      } else {
+        let rand = Math.floor(Math.random() * len);
+        let word = this.state.wordBank[rand];
+        this.setState({ currentWord: word })
+      }
+    }
   }
 
   startEvent(e) {
     e.preventDefault();
-    this.setState({ playing: true })
+    this.getRandWord(true);
+    this.setState({
+      playing: true,
+      finished: false,
+      newRecord: false,
+      seenWords: [],
+      lives: 3,
+      currentScore: 0
+    })
   }
 
+  stopEvent() {
+    this.setState({ playing: false, finished: true }, () => {
+      if (this.state.currentScore > this.state.bestScore) {
+        let val = this.state.currentScore;
+        this.setState({ bestScore: val, newRecord: true })
+        //TODO push best score to DB
+      }
+    })
+  }
+
+  checkSeen(e) {
+    if (this.state.seenWords.includes(this.state.currentWord)) {
+      let val = this.state.currentScore + 1;
+      this.setState({ currentScore: val }, () => {
+        this.getRandWord(false)
+      })
+    } else {
+      this.loseLife();
+      this.getRandWord(true);
+    }
+  }
+
+  checkNew(e) {
+    if (!this.state.seenWords.includes(this.state.currentWord)) {
+      let val = this.state.currentScore + 1;
+      let allSeen = [...this.state.seenWords, this.state.currentWord];
+      this.setState({ seenWords: allSeen, currentScore: val}, () => {
+        this.getRandWord(false);
+      })
+    } else {
+      this.loseLife();
+      this.getRandWord(false);
+    }
+  }
 
   render() {
     return (
       <div id="verb-view">
-        {!this.state.playing &&
+        {!this.state.playing && !this.state.finished &&
           <main id="verb-hero">
             <img id="hero-icon" src="../assets/logo_lg.svg" width="100" height="100" alt="dictionary book icon" />
             <h1 className="hero-title">Verbal Memory Test</h1>
@@ -56,17 +115,37 @@ class VerbMem extends React.Component {
             <button id="home-start-btn" onClick={(e) => {this.startEvent(e)}}>Get Started</button>
           </main>
         }
-        {this.state.playing &&
+        {this.state.playing && !this.state.finished &&
           <main id="verb-hero">
-            <img id="hero-icon" src="../assets/logo_lg.svg" width="100" height="100" alt="dictionary book icon" />
-            <h1 className="hero-title">Verbal Memory Test</h1>
-            <h4>You will be shown words, one at a time.</h4>
-            <h4>If you've seen it before, click SEEN. If it's a new word, click NEW</h4>
-            <button id="home-start-btn" onClick={(e) => {this.startEvent(e)}}>SEEN</button>
-            <button id="home-start-btn" onClick={(e) => {this.startEvent(e)}}>NEW</button>
+            <div id="verb-game-info">
+              <h3 id="verb-game-lives">
+                {"Lives | " + this.state.lives}
+              </h3>
+              <h3 id="verb-game-score">
+                {"Score | " + this.state.currentScore}
+              </h3>
+            </div>
+            <h1 className="hero-title">{this.state.currentWord}</h1>
+            <div id="verb-play-btns">
+              <button id="home-start-btn" onClick={(e) => {this.checkSeen(e)}}>SEEN</button>
+              <button id="home-start-btn" onClick={(e) => {this.checkNew(e)}}>NEW</button>
+            </div>
           </main>
         }
-        <section className="dict-desc description">
+        {this.state.finished && !this.state.playing &&
+          <main id="verb-hero">
+            <img id="hero-icon" src="../assets/logo_lg.svg" width="100" height="100" alt="lightning bolt icon" />
+            <h3>Verbal Memory</h3>
+            <h1 className="hero-title">{this.state.currentScore + " words"}</h1>
+            <div id="event-end-info">
+              {this.state.newRecord &&
+                <button id="reaction-save-btn" onClick={(e) => {this.storeBest(e)}}>Save Score</button>
+              }
+              <button id="reaction-start-btn" onClick={(e) => {this.startEvent(e)}}>Try Again</button>
+            </div>
+          </main>
+        }
+        <section className="verb-desc description">
           <h2>About The Test</h2>
           <p>
             This is a simple tool to measure your reaction time.

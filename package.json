@@ -5,6 +5,7 @@
   "main": "electron.js",
   "scripts": {
     "start": "electron .",
+    "db:build": "mysql -u root < server/schema.sql",
     "dev": "concurrently \"webpack --watch\" \"electron .\"",
     "build": "rimraf ./public && mkdir public && webpack --progress -p"
   },
@@ -35,6 +36,7 @@
     "axios": "^0.21.0",
     "cors": "^2.8.5",
     "express": "4.17.1",
+    "mysql": "^2.18.1",
     "random-words": "^1.1.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
