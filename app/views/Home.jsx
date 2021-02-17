@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import Api from "../services/api";
-import styles from "../styles/views/home.css";
+import styles from "../styles/views/Home.css";
 
-import Game from '../components/game.js';
-import GameList from '../components/gameList.js';
+import GameList from '../components/GameList.jsx';
 
 class Root extends Component {
   constructor(props) {
@@ -43,11 +42,8 @@ class Root extends Component {
           <img id="hero-icon" src="../assets/logo_lg.svg" width="100" alt="lightning bolt icon" />
           <h1 className="hero-title">Hacker Benchmark</h1>
           <h3>Measure your abilities with brain games and cognitive tests.</h3>
-          {/* <button id="home-start-btn">Get Started</button> */}
         </main>
-        <section>
-          <GameList />
-        </section>
+        <GameList />
       </div>
     );
   }

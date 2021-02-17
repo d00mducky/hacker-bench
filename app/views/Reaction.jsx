@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import Api from "../services/api";
-import styles from "../styles/views/reaction.css";
 
-import GameList from '../components/gameList.js';
+import styles from "../styles/views/Reaction.css";
 
 class Reaction extends Component {
   constructor(props) {

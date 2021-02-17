@@ -1,7 +1,5 @@
 import React from "react";
 
-import Hero from '../components/hero.js';
-
 class AimTrainer extends React.Component {
   constructor(props) {
     super(props);

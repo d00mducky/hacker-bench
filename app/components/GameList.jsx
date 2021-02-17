@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-import styles from '../styles/components/gameList.css';
+import styles from '../styles/components/GameList.css';
 
 const GameList = () => {
   return (
@@ -28,7 +28,34 @@ const GameList = () => {
         <Link to="/nums" id="nums-card" className="card">
           <img id="nums-logo" src="../assets/logo_num.svg" alt="lightning bolt icon" />
           <h3>
+          Number Memory
+          </h3>
+          <p>Remember the longest number you can.</p>
+        </Link>
+      </article>
+      <article className="game-container">
+        <Link to="/nums" id="seq-card" className="card">
+          <img id="nums-logo" src="../assets/logo_seq.svg" alt="lightning bolt icon" />
+          <h3>
           Sequence Memory
+          </h3>
+          <p>Remember the longest number you can.</p>
+        </Link>
+      </article>
+      <article className="game-container">
+        <Link to="/nums" id="dict-card" className="card">
+          <img id="nums-logo" src="../assets/logo_dict.svg" alt="lightning bolt icon" />
+          <h3>
+          Verbal Memory
+          </h3>
+          <p>Remember the longest number you can.</p>
+        </Link>
+      </article>
+      <article className="game-container">
+        <Link to="/nums" id="chimp-card" className="card">
+          <img id="nums-logo" src="../assets/logo_seq.svg" alt="lightning bolt icon" />
+          <h3>
+          Chimp Test
           </h3>
           <p>Remember the longest number you can.</p>
         </Link>
