@@ -7,30 +7,11 @@ import GameList from '../components/GameList.jsx';
 class Root extends Component {
   constructor(props) {
     super(props);
-    this.state = { name: "Bob", games: ['aim', 'click'] };
-    this.handleInput = this.handleInput.bind(this);
-    this.handleSearch = this.handleSearch.bind(this);
+    this.state = {};
   }
 
   componentDidMount() {
     // Do something when loaded
-  }
-
-  handleInput(e) {
-    this.setState({ name: e.target.value });
-  }
-
-  handleSearch(e) {
-    e.preventDefault();
-    this.setState({ name: e.target.value });
-    Api.get().then((data) => {
-      console.log(data);
-    });
-  }
-
-  goToReaction(e) {
-    e.preventDefault();
-    const reactionUrl = 'http://localhost:5000/reaction'
   }
 
   render() {

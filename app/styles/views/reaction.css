@@ -51,6 +51,15 @@
   background-color: white;
 }
 
+#misclicks {
+  padding-top: 1rem;
+  text-align: center;
+}
+
+#event-end-info {
+  text-align: center;
+}
+
 .reaction-desc {
   padding: 2rem 1rem;
   background-color: white;

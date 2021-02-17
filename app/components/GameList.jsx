@@ -39,7 +39,7 @@ const GameList = () => {
           <h3>
           Sequence Memory
           </h3>
-          <p>Remember the longest number you can.</p>
+          <p>Remember an increasingly long pattern.</p>
         </Link>
       </article>
       <article className="game-container">
@@ -48,7 +48,7 @@ const GameList = () => {
           <h3>
           Verbal Memory
           </h3>
-          <p>Remember the longest number you can.</p>
+          <p>Keep as many words in short term memory as possible.</p>
         </Link>
       </article>
       <article className="game-container">
@@ -57,7 +57,7 @@ const GameList = () => {
           <h3>
           Chimp Test
           </h3>
-          <p>Remember the longest number you can.</p>
+          <p>Are you smarter than a chimpanzee?</p>
         </Link>
       </article>
     </section>

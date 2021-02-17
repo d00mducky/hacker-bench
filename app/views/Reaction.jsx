@@ -10,15 +10,13 @@ class Reaction extends Component {
       playing: false,
       waiting: false,
       finished: false,
+      tooSoon: 0,
       startTime: null,
       stopTime: null,
       currentTime: null,
       newRecord: false,
       bestTime: 1000000000
     };
-
-    this.handleInput = this.handleInput.bind(this);
-    this.handleSearch = this.handleSearch.bind(this);
   }
 
   componentDidMount() {
@@ -53,6 +51,12 @@ class Reaction extends Component {
     })
   }
 
+  clickedTooSoon(e) {
+    e.preventDefault();
+    let val = this.state.tooSoon + 1;
+    this.setState({ tooSoon: val })
+  }
+
   startWaiting() {
     let now = new Date();
     this.setState({ waiting: true, startTime: now })
@@ -68,6 +72,7 @@ class Reaction extends Component {
 
   getTime() {
     let total = (this.state.stopTime.getTime() - this.state.startTime.getTime());
+    total += this.state.tooSoon * 1000;
     this.setState({
       currentTime: total
     })
@@ -106,7 +111,7 @@ class Reaction extends Component {
           </main>
         }
         {this.state.playing && !this.state.waiting &&
-          <main id="home-hero-red">
+          <main id="home-hero-red" onClick={(e) => {this.clickedTooSoon(e)}}>
             <img src="../assets/logo_pause.svg" width="100" alt="three dots in a row" />
             <br/>
             <h1 className="hero-title">Wait For Green</h1>
@@ -125,11 +130,14 @@ class Reaction extends Component {
                 this.state.currentTime + ' ms'
               }
             </h1>
-            <div>
+            <div id="event-end-info">
               {this.state.newRecord &&
                 <button id="reaction-save-btn" onClick={(e) => {this.storeBest(e)}}>Save Score</button>
               }
               <button id="reaction-start-btn" onClick={(e) => {this.startEvent(e)}}>Try Again</button>
+              {this.state.tooSoon > 0 &&
+                <h3 id="misclicks" >{"Note: " + this.state.tooSoon + " misclicks added " + (this.state.tooSoon * 1000) + " ms to your total."}</h3>
+              }
             </div>
           </main>
         }

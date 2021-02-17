@@ -1,5 +1,7 @@
 import React from "react";
 
+import styles from '../styles/views/Aim.css';
+
 class AimTrainer extends React.Component {
   constructor(props) {
     super(props);
@@ -7,61 +9,103 @@ class AimTrainer extends React.Component {
     this.state = {
       left: null,
       top: null,
-      topScore: 0,
+      playing: false,
+      finished: false,
+      newRecord: false,
+      bestScore: 0,
+      currentScore: 0,
+      targetsLeft: 30,
       missed: 0,
-      timer: 0,
+      startTime: null,
+      stopTime: null
     };
   }
 
   componentDidMount() {
-    this.startTimer();
-  }
-
-  componentWillUnmount() {
-    // TODO need to handle canceling the timer on view switch
   }
 
   randGenerator(min, max) {
-    return Math.floor(Math.random() * (max - min) + min);
+    return (Math.floor(Math.random() * (max - min) + min))
   }
 
-  tickDownTimer(iteration) {
-    setTimeout(() => {
-      this.setState({
-        timer: iteration,
-      });
-      console.log(this.state.timer);
-    }, 1000 * iteration);
+  setTargetPos() {
+    let leftP = randGenerator(0, 90);
+    let rightP = randGenerator(0, 90);
+    this.setState({ left: leftP, right: rightP })
   }
 
-  startTimer() {
-    let start = Date.now();
-    for (let i = 1; i <= 30; i++) {
-      this.tickDownTimer(i);
-    }
-  }
-
-  setTarget() {
+  startEvent(e) {
+    e.preventDefault();
+    let now = new Date();
     let leftP = randGenerator(0, 90);
     let rightP = randGenerator(0, 90);
     this.setState({
+      playing: true,
       left: leftP,
       right: rightP,
-    });
+      startTime: now
+    })
   }
+
+  hitTarget(e) {
+    e.preventDefault();
+    let val = this.state.targetsLeft - 1;
+    this.setState({ targetsLeft: val }, () => {
+
+    })
+  }
+
+  stopEvent(e) {
+    e.preventDefault();
+    let now = new Date();
+  }
+
 
   render() {
     return (
-      <div className="container">
-        <Hero />
-        <h1>Hey yo</h1>
-        <h2>Aim Trainer</h2>
+      <div id="aim-view">
+        {!this.state.playing && !this.state.finished &&
+          <main id="home-hero">
+            <img id="hero-icon" src="../assets/logo_lg.svg" width="100" alt="lightning bolt icon" />
+            <h1 className="hero-title">Aim Trainer</h1>
+            <img onClick={(e) => {this.startEvent(e)}} id="target-icon" src="../assets/target.svg" width="100" alt="a target" />
+            <h3>Hit 30 targets as quickly as you can.</h3>
+            <br></br>
+            <h3>Click the target to begin!</h3>
+          </main>
+        }
+        {this.state.playing && !this.state.finished && this.state.targetsLeft > 0 &&
+          <main id="home-hero">
+            <img
+              id="target-icon"
+              src="../assets/target.svg"
+              width="100"
+              alt="a target"
+              onClick={(e) => {this.hitTarget(e)}}
+              style={{
+                'position': 'relative',
+                'top': `${this.state.top}%`,
+                'left': `${this.state.left}%`
+              }}
+            />
+          </main>
+        }
+        {this.state.finished &&
+          <main id="home-hero">
+            <img id="hero-icon" src="../assets/logo_lg.svg" width="100" alt="lightning bolt icon" />
+            <h1 className="hero-title">Aim Trainer</h1>
+            <img id="target-icon" src="../assets/target.svg" width="100" alt="a target" />
+            <h3>Hit 30 targets as quickly as you can!</h3>
+          </main>
+        }
+        <section>
           <p>
-            Click the targets as quickly and accurately as you can.<br/><br/>
-            This tests reflexes and hand-eye coordination.<br/><br/>
-            Once you've clicked 30 targets, your score and average time per target will be displayed.<br/><br/>
+            Click the targets as quickly and accurately as you can.
+            This tests reflexes and hand-eye coordination.
+            Once you've clicked 30 targets, your score and average time per target will be displayed.
             This test is best taken with a mouse or tablet screen. Trackpads are difficult to score well with.
           </p>
+        </section>
       </div>
     );
   }
