@@ -1,5 +1,5 @@
 import React from "react";
-
+import API from '../services/api.js';
 import wordBank from '../services/wordBank.js'
 import styles from '../styles/views/VerbMem.css';
 
@@ -23,7 +23,13 @@ class VerbMem extends React.Component {
 
   componentDidMount() {
     //TODO pull in best score from DB
-    this.setState({ wordBank: wordBank.words })
+    API.getOne([1], (results) => {
+      let top = results[0].verbalScore;
+      this.setState({
+        wordBank: wordBank.words,
+        bestScore: top
+      })
+    })
   }
 
   loseLife() {
@@ -101,6 +107,13 @@ class VerbMem extends React.Component {
       this.loseLife();
       this.getRandWord(false);
     }
+  }
+
+  storeBest(e) {
+    e.preventDefault();
+    API.updateVerbalScore([this.state.currentScore], (results) => {
+      console.log(results);
+    })
   }
 
   render() {

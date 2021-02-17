@@ -26,25 +26,25 @@ module.exports = {
     })
   },
   updateReactScore(req, res) {
-    models.hackrBench.updateAimScore([req.body.reactScore], (err, results) => {
+    models.hackrBench.updateReactScore([req.body.reactScore], (err, results) => {
       err ? res.staus(400).send('Cannot UPDATE MySQL db') : res.send(results);
     })
 
   },
   updateNumScore(req, res) {
-    models.hackrBench.updateAimScore([req.body.numScore], (err, results) => {
+    models.hackrBench.updateNumScore([req.body.numScore], (err, results) => {
       err ? res.staus(400).send('Cannot UPDATE MySQL db') : res.send(results);
     })
 
   },
   updateVerbScore(req, res) {
-    models.hackrBench.updateAimScore([req.body.aimScore], (err, results) => {
+    models.hackrBench.updateVerbScore([req.body.verbScore], (err, results) => {
       err ? res.staus(400).send('Cannot UPDATE MySQL db') : res.send(results);
     })
 
   },
   updateSeqScore(req, res) {
-    models.hackrBench.updateAimScore([req.body.aimScore], (err, results) => {
+    models.hackrBench.updateSeqScore([req.body.seqScore], (err, results) => {
       err ? res.staus(400).send('Cannot UPDATE MySQL db') : res.send(results);
     })
 

@@ -22,6 +22,10 @@ class AimTrainer extends React.Component {
   }
 
   componentDidMount() {
+    API.getOne([1], (results) => {
+      let top = results[0].aimScore;
+      this.setState({ bestTime: top })
+    })
   }
 
   randGenerator(min, max) {

@@ -7,7 +7,8 @@
     "start": "electron .",
     "db:build": "mysql -u root < server/schema.sql",
     "dev": "concurrently \"webpack --watch\" \"electron .\"",
-    "build": "rimraf ./public && mkdir public && webpack --progress -p"
+    "build": "rimraf ./public && mkdir public && webpack --progress -p",
+    "make": "electron-forge make"
   },
   "repository": "https://github.com/kyleperra/hackr-bench",
   "keywords": [

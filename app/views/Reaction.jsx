@@ -20,8 +20,10 @@ class Reaction extends Component {
   }
 
   componentDidMount() {
-    // Do something when loaded
-    //TODO grab best time from DB
+    API.getOne([1], (results) => {
+      let top = results[0].aimScore;
+      this.setState({ bestTime: top })
+    })
   }
 
   handleInput(e) {

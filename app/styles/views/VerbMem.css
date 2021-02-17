@@ -42,3 +42,18 @@
 #very-game-score {
   margin-left: 1rem;
 }
+
+.verb-desc {
+  padding: 2rem 1rem;
+  background-color: white;
+  max-width: 1010px;
+  margin: auto;
+}
+
+.verb-desc > h2 {
+  margin-bottom: 1rem;
+}
+
+.verb-desc > p {
+  font-size: 1.125rem;
+}

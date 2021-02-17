@@ -29,15 +29,30 @@ module.exports = {
 
   },
   updateNumScore(params, callback) {
+    let queryString = 'update users set numScore = ? where id = 1';
+    db.query(queryString, params, (err, results) => {
+      err ? callback(err, null) : callback(null, results);
+    })
 
   },
   updateVerbScore(params, callback) {
+    let queryString = 'update users set verbalScore = ? where id = 1';
+    db.query(queryString, params, (err, results) => {
+      err ? callback(err, null) : callback(null, results);
+    })
 
   },
   updateSeqScore(params, callback) {
+    let queryString = 'update users set seqScore = ? where id = 1';
+    db.query(queryString, params, (err, results) => {
+      err ? callback(err, null) : callback(null, results);
+    })
 
   },
   updateChimpScore(params, callback) {
-
+    let queryString = 'update users set chimpScore = ? where id = 1';
+    db.query(queryString, params, (err, results) => {
+      err ? callback(err, null) : callback(null, results);
+    })
   }
 }
