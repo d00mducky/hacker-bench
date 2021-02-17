@@ -57,6 +57,13 @@ class AimTrainer extends React.Component {
       <div className="container">
         <Hero />
         <h1>Hey yo</h1>
+        <h2>Aim Trainer</h2>
+          <p>
+            Click the targets as quickly and accurately as you can.<br/><br/>
+            This tests reflexes and hand-eye coordination.<br/><br/>
+            Once you've clicked 30 targets, your score and average time per target will be displayed.<br/><br/>
+            This test is best taken with a mouse or tablet screen. Trackpads are difficult to score well with.
+          </p>
       </div>
     );
   }

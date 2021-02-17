@@ -8,14 +8,13 @@ class Reaction extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "Bob",
-      games: ['aim', 'click'],
       playing: false,
       waiting: false,
       finished: false,
       startTime: null,
       stopTime: null,
       currentTime: null,
+      newRecord: false,
       bestTime: 1000000000
     };
 
@@ -25,6 +24,7 @@ class Reaction extends Component {
 
   componentDidMount() {
     // Do something when loaded
+    //TODO grab best time from DB
   }
 
   handleInput(e) {
@@ -40,7 +40,7 @@ class Reaction extends Component {
   }
 
   randTimer() {
-    let rand = (Math.random() * (8 - 2) + 2) * 1000;
+    let rand = (Math.random() * (6 - 2) + 2) * 1000;
     setTimeout(() => {
       this.startWaiting();
     }, rand);
@@ -69,11 +69,13 @@ class Reaction extends Component {
 
   getTime() {
     let total = (this.state.stopTime.getTime() - this.state.startTime.getTime());
+    this.setState({
+      currentTime: total
+    })
     if (this.state.bestTime > total) {
-      this.setState({ bestTime: total })
+      this.setState({ bestTime: total, newRecord: true })
       // TODO store top time to DB
     }
-    return total;
   }
 
   resetGame() {
@@ -82,7 +84,8 @@ class Reaction extends Component {
       playing: false,
       waiting: false,
       startTime: null,
-      stopTime: null
+      stopTime: null,
+      newRecord: false
     })
   }
 
@@ -111,11 +114,8 @@ class Reaction extends Component {
           </main>
         }
         {this.state.waiting &&
-          <main id="home-hero-green">
-            <a onClick={(e) => {this.stopEvent(e)}}>
-              <img src="../assets/logo_pause.svg" width="100" alt="three dots in a row" />
-              <h1 className="hero-title">Click!!!</h1>
-            </a>
+          <main id="home-hero-green" onClick={(e) => {this.stopEvent(e)}}>
+            <h1 className="hero-title">Click!!!</h1>
           </main>
         }
         {this.state.finished &&
@@ -123,22 +123,33 @@ class Reaction extends Component {
             <img src="../assets/logo_clock.svg" width="100" alt="three dots in a row" />
             <h1 className="hero-title">
               {
-                this.getTime() + ' ms'
+                this.state.currentTime + ' ms'
               }
             </h1>
             <div>
-              <button id="reaction-save-btn" onClick={(e) => {this.storeBest(e)}}>Save Score</button>
+              {this.state.newRecord &&
+                <button id="reaction-save-btn" onClick={(e) => {this.storeBest(e)}}>Save Score</button>
+              }
               <button id="reaction-start-btn" onClick={(e) => {this.startEvent(e)}}>Try Again</button>
             </div>
           </main>
         }
         <section className="reaction-desc description">
-          <h2>Aim Trainer</h2>
+          <h2>About The Test</h2>
           <p>
-            Click the targets as quickly and accurately as you can.<br/>
-            This tests reflexes and hand-eye coordination.<br/>
-            Once you've clicked 30 targets, your score and average time per target will be displayed.<br/>
-            This test is best taken with a mouse or tablet screen. Trackpads are difficult to score well with.
+            This is a simple tool to measure your reaction time.
+            The average (median) reaction time is 215 milliseconds, according to the data collected so far.
+          </p><br></br>
+          <p>
+            In addition to measuring your reaction time, this test is affected by the latency of your computer and monitor. Using a fast computer and low latency / high framerate monitor will improve your score.
+            Scores in this test are faster than the aim trainer test, because you can react instantly without moving the cursor.
+          </p><br></br>
+          <p>
+            This is discused in further detail on the the statistics page. While an average human reaction time may fall between 200-250ms, your computer could be adding 10-50ms on top. Some modern TVs add as much as 150ms!
+          </p><br></br>
+          <p>
+            If you want, you can keep track of your scores, and see your full history of reaction times.
+            Just perform at least 5 clicks and then save.
           </p>
         </section>
       </div>

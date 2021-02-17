@@ -13,13 +13,17 @@ html, body {
 body {
 	font-size: 1.25rem;
 	background-color:#e6e8f4;
-	font-family: helvetica, sans-serif;
+	font-family: helvetica, Arial, sans-serif;
 }
 
 
 #app, #app-render {
 	width: 100%;
 	height: 100%;
+}
+
+#home-hero, #home-hero-green, #home-hero-red {
+  margin-bottom: 2rem;
 }
 
 .active {

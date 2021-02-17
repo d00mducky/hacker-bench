@@ -17,6 +17,7 @@
 
 #home-hero-green {
   background-color: lightseagreen;
+  cursor: pointer;
 }
 
 #reaction-save-btn {
@@ -48,4 +49,19 @@
 #reaction-start-btn:hover {
   /* background-color: rgb(254, 209, 85); */
   background-color: white;
+}
+
+.reaction-desc {
+  padding: 2rem 1rem;
+  background-color: white;
+  max-width: 1010px;
+  margin: auto;
+}
+
+.reaction-desc > h2 {
+  margin-bottom: 1rem;
+}
+
+.reaction-desc > p {
+  font-size: 1.125rem;
 }
