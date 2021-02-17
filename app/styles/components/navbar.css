@@ -9,7 +9,6 @@ header {
 
 	width: 100%;
 	min-height: 6vh;
-	border: 1px solid blue;
 }
 
 .header-container {
@@ -20,7 +19,7 @@ header {
   margin: auto;
 }
 
-.site-nav {
+.site-nav, .account-nav {
 	display: flex;
 	align-items: center;
 	min-height: 6vh;
@@ -40,6 +39,12 @@ header {
   margin-right: .5rem;
 }
 
-.account-nav > a {
-	padding-left: .5rem;
+#site-signup, #site-login {
+  display: flex;
+  align-items: center;
+  height: 6vh;
+  font-size: 1.125rem;
+  color: black;
+  text-decoration: none;
+	padding: 0rem .5rem;
 }

@@ -1,0 +1,51 @@
+#home-hero-red, #home-hero-green {
+  /* border: 1px solid green; */
+  width: 100%;
+  height: 500px;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#home-hero-red {
+  background-color: lightcoral;
+}
+
+#home-hero-green {
+  background-color: lightseagreen;
+}
+
+#reaction-save-btn {
+  padding: 1rem 2.5rem;
+  background-color: rgb(255, 209, 84);
+  margin-top: 1rem;
+  color: black;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.125rem;
+  margin: .5rem;
+}
+
+#reaction-save-btn:hover {
+  /* background-color: rgb(254, 209, 85); */
+  background-color: white;
+}
+
+#reaction-start-btn {
+  padding: 1rem 2.5rem;
+  background-color: rgb(255, 209, 84);
+  margin-top: 1rem;
+  color: black;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.125rem;
+}
+
+#reaction-start-btn:hover {
+  /* background-color: rgb(254, 209, 85); */
+  background-color: white;
+}

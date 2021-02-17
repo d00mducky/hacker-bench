@@ -1,5 +1,7 @@
 import React from "react";
 
+import Hero from '../components/hero.js';
+
 class AimTrainer extends React.Component {
   constructor(props) {
     super(props);
@@ -15,6 +17,10 @@ class AimTrainer extends React.Component {
 
   componentDidMount() {
     this.startTimer();
+  }
+
+  componentWillUnmount() {
+    // TODO need to handle canceling the timer on view switch
   }
 
   randGenerator(min, max) {
@@ -49,6 +55,7 @@ class AimTrainer extends React.Component {
   render() {
     return (
       <div className="container">
+        <Hero />
         <h1>Hey yo</h1>
       </div>
     );

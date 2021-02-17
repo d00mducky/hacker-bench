@@ -15,10 +15,12 @@ const Navbar = () => (
         </Link>
       </nav>
       <nav className="account-nav">
-        <Link to="/">Home</Link>
-        <Link to="about">About</Link>
-        <Link to="aim">AimTrainer</Link>
-        <Link to="/root">Root</Link>
+        <Link to="/signup" id="site-signup">
+          SIGN UP
+        </Link>
+        <Link to="/login" id="site-login">
+          LOGIN
+        </Link>
       </nav>
     </div>
   </header>

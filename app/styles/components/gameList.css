@@ -1,0 +1,51 @@
+#reaction-logo {
+  width: 70px;
+}
+
+#game-list {
+  max-width: 1010px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.game-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 2rem;
+}
+
+#reaction-card {
+  height: 250px;
+}
+
+#aim-card {
+  height: 250px;
+}
+
+#nums-card {
+  height: 250px;
+}
+
+.card {
+  width: 282.67px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  background-color: white;
+}
+
+.card > h3 {
+  margin: 1rem 1rem;
+}
+
+.card > p {
+  margin: 0rem 1rem;
+}
