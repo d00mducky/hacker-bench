@@ -1,0 +1,16 @@
+#verb-hero {
+  width: 100%;
+  height: 500px;
+  background-color: #2b87d1;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#verb-hero > h4 {
+  padding: 1rem 1rem;
+}

@@ -8,7 +8,7 @@ const GameList = () => {
     <section id="game-list">
       <article className="game-container">
         <Link to="/reaction" id="reaction-card" className="card">
-          <img id="reaction-logo" src="../assets/logo_alt.svg" alt="lightning bolt icon" />
+          <img id="reaction-logo" src="../assets/logo_alt.svg" alt="lightning bolt icon" width="60" height="60"/>
           <h3>
           Reaction Time
           </h3>
@@ -17,7 +17,7 @@ const GameList = () => {
       </article>
       <article className="game-container">
         <Link to="/aim" id="aim-card" className="card">
-          <img id="aim-logo" src="../assets/logo_aim.svg" alt="lightning bolt icon" />
+          <img id="aim-logo" src="../assets/logo_aim.svg" alt="lightning bolt icon" width="60" height="60"/>
           <h3>
           Aim Trainer
           </h3>
@@ -26,7 +26,7 @@ const GameList = () => {
       </article>
       <article className="game-container">
         <Link to="/nums" id="nums-card" className="card">
-          <img id="nums-logo" src="../assets/logo_num.svg" alt="lightning bolt icon" />
+          <img id="nums-logo" src="../assets/logo_num.svg" alt="lightning bolt icon" width="60" height="60"/>
           <h3>
           Number Memory
           </h3>
@@ -34,8 +34,8 @@ const GameList = () => {
         </Link>
       </article>
       <article className="game-container">
-        <Link to="/nums" id="seq-card" className="card">
-          <img id="nums-logo" src="../assets/logo_seq.svg" alt="lightning bolt icon" />
+        <Link to="/seq" id="seq-card" className="card">
+          <img id="nums-logo" src="../assets/logo_seq.svg" alt="lightning bolt icon" width="60" height="60"/>
           <h3>
           Sequence Memory
           </h3>
@@ -43,17 +43,17 @@ const GameList = () => {
         </Link>
       </article>
       <article className="game-container">
-        <Link to="/nums" id="dict-card" className="card">
-          <img id="nums-logo" src="../assets/logo_dict.svg" alt="lightning bolt icon" />
+        <Link to="/verbmem" id="dict-card" className="card">
+          <img id="nums-logo" src="../assets/logo_dict.svg" alt="lightning bolt icon" width="60" height="60"/>
           <h3>
           Verbal Memory
           </h3>
-          <p>Keep as many words in short term memory as possible.</p>
+          <p>Keep as many words in memory as possible.</p>
         </Link>
       </article>
       <article className="game-container">
         <Link to="/nums" id="chimp-card" className="card">
-          <img id="nums-logo" src="../assets/logo_seq.svg" alt="lightning bolt icon" />
+          <img id="nums-logo" src="../assets/logo_seq.svg" alt="lightning bolt icon" width="60" height="60"/>
           <h3>
           Chimp Test
           </h3>
